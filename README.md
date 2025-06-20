@@ -47,3 +47,23 @@ coverage run -m pytest
 coverage report -m
 coverage html
 ```
+
+## Code Style & Tooling
+
+This project uses [pre-commit](https://pre-commit.com/) hooks to ensure consistent code style and automatic formatting before each commit.
+
+To enable:
+```bash
+pip install pre-commit
+pre-commit install
+```
+To manually run on all files
+```bash
+pre-commit run --all-files
+```
+
+The following checks are configured in .pre-commit-config.yaml
+- black: code formatting
+- ruff: linting & autofix
+- end-of-line-fixer: final newline enforcement
+
