@@ -11,9 +11,9 @@
         
         <label for="Status">Status</label>
         <select class="task-select" name="status" id="status">
-            <option value="Not Started" {% if request.form.get('status') == 'Not Started' %}selected{% endif %}>Not Started</option>
-            <option value="Pending" {% if request.form.get('status') == 'Pending' %}selected{% endif %}>Pending</option>
-            <option value="Finished" {% if request.form.get('status') == 'Finished' %}selected{% endif %}>Finished</option>
+            <option value="not started" {% if request.form.get('status') == 'not started' %}selected{% endif %}>Not Started</option>
+            <option value="pending" {% if request.form.get('status') == 'pending' %}selected{% endif %}>Pending</option>
+            <option value="finished" {% if request.form.get('status') == 'finished' %}selected{% endif %}>Finished</option>
         </select>
 
         <label for="priority">Priority</label>
