@@ -1,7 +1,6 @@
 # ToDoAlchemy
 
-This project is based on the official [Flask tutorial](https://flask.palletsprojects.com/en/latest/tutorial/), but has been refactored to use SQLAlchemy and reworked into a simple ToDo application. The authentication system and blueprint structure remain, but all database access is now handled via SQLAlchemy models. The tests have not yet been refactored for SQLAlchemy—this will be addressed in a future version.
-
+This project is based on the official [Flask tutorial](https://flask.palletsprojects.com/en/latest/tutorial/), but has been refactored to use SQLAlchemy and reworked into a simple ToDo application. The authentication system and blueprint structure remain, but all database access is now handled via SQLAlchemy models. 
 ## Features
 
 - ToDo list management (create, view, update, delete tasks)
@@ -22,7 +21,7 @@ This repository serves as a modern Flask project template with SQLAlchemy and a 
 - SQLAlchemy
 - Jinja2
 - SQLite
-- `pytest` (tests not yet refactored for SQLAlchemy)
+- `pytest` 
 - `coverage`
 
 ## Getting Started
