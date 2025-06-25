@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Add New Task{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <label for="title">Title</label>
+        <input class="task-input" name="title" id="title" value="{{ request.form.get('title', '') }}" required>
+        
+        <label for="status">Status</label>
+        <select class="task-select" name="status" id="status">
+            <option value="Not Started" {% if request.form.get('status') == 'Not Started' %}selected{% endif %}>Not Started</option>
+            <option value="Pending" {% if request.form.get('status') == 'Pending' %}selected{% endif %}>Pending</option>
+            <option value="Finished" {% if request.form.get('status') == 'Finished' %}selected{% endif %}>Finished</option>
+        </select>
+        
+        <label for="priority">Priority</label>
+        <select class="task-select" name="priority" id="priority">
+            <option value="high" {% if request.form.get('priority') == 'high' %}selected{% endif %}>High</option>
+            <option value="medium" {% if request.form.get('priority') == 'medium' %}selected{% endif %}>Medium</option>
+            <option value="low" {% if request.form.get('priority') == 'low' %}selected{% endif %}>Low</option>
+        </select>
+
+        <label for="due">Due</label>
+        <input class="task-date" type="date" name="due">
+        
+        <label for="description">Description</label>
+        <textarea class="task-desc" name="description" id="description">{{ request.form.get('description', '') }}</textarea>
+        
+        <input class="task-button" type="submit" value="Save">
+    </form>
+{% endblock %}

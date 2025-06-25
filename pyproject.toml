@@ -1,15 +1,16 @@
 [project]
-name = "flaskr"
-version = "1.0.0"
+name = "todoalchemy"
+version = "0.1.0"
 authors = [
-    { name="Example Author", email="author@example.com" },
+    { name="Jesper Anteryd", email="jesper.anteryd@gmail.com" },
 ]
+description = "A ToDo app built with Flask and SQLAlchemy."
 
-description = "The basic blog app built in the Flask tutorial."
 readme = "README.md"
 
 dependencies = [
     "flask",
+    "SQLalchemy"
 ]
 
 [build-system]
@@ -22,4 +23,4 @@ testpaths = ["tests"]
 
 [tool.coverage.run]
 branch = true
-source = ["flaskr"]
+source = ["flask_todo"]

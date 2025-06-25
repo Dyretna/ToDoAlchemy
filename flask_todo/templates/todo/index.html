@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <div class="header-inline">
+        <span class="header-title">{% block title %}Posted Tasks{% endblock %}</span>
+        {% if g.user %}
+            <a class="action" href="{{ url_for('todo.create') }}">Add Task</a>
+        {% endif %}
+    </div>
+{% endblock %}
+
+
+{% block content %}
+    <div class="task-list">
+        {% for task in tasks %}
+            <div class="task">
+                <div class="task-header">
+                    <span class="task-title">{{ task.title }}</span>
+                    <div class="task-actions">
+                        <span class="status {% if task.status == 'Finished' %}status-completed
+                                            {% elif task.status == 'Pending' %}status-progress
+                                            {% else %}status-other{% endif %}">
+                            {{ task.status }}
+                        </span>
+                        <span class="priority {% if task.priority == 'high' %}priority-high
+                                              {% elif task.priority == 'medium' %}priority-medium
+                                              {% else %}priority-low{% endif %}">
+                            {{ task.priority }}
+                        </span>
+                        <a class="action" href="{{ url_for('todo.update', id=task.id) }}">Edit</a>
+                    </div>
+                </div>
+                <p class="description">{{ task.description  }}</p>
+                <div class="post-desc">
+                    <span class="creator">Created by: {{ task.user.username }} </span>
+                    <span class="created">{{ task.created.strftime('%Y-%m-%d') }} </span>                        
+                    <span class="due">Due: {{ task.due.strftime('%Y-%m-%d') }} </span>
+                </div>
+            </div>
+            {% if not loop.last %}
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}

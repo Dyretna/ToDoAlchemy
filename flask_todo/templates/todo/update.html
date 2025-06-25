@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block header %}
+    <h1>{% block title %}Update Task"{{ task.title }}"{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <form method="post">
+        <label for="title">Title</label>
+        <input class="task-input" name="title" id="title" value="{{ request.form.get('title', task.title) }}" required>
+        
+        <label for="Status">Status</label>
+        <select class="task-select" name="status" id="status">
+            <option value="Not Started" {% if request.form.get('status') == 'Not Started' %}selected{% endif %}>Not Started</option>
+            <option value="Pending" {% if request.form.get('status') == 'Pending' %}selected{% endif %}>Pending</option>
+            <option value="Finished" {% if request.form.get('status') == 'Finished' %}selected{% endif %}>Finished</option>
+        </select>
+
+        <label for="priority">Priority</label>
+        <select class="task-select" name="priority" id="priority">
+            <option value="top" {% if request.form.get('priority', task.priority) == 'top' %}selected{% endif %}>Top Priority</option>
+            <option value="middle" {% if request.form.get('priority', task.priority) == 'middle' %}selected{% endif %}>Middle Priority</option>
+            <option value="low" {% if request.form.get('priority', task.priority) == 'low' %}selected{% endif %}>Less Priority</option>
+        </select>
+
+        <label for="due">Due</label>
+        <input class="task-date" type="date" name="due" value="{{ request.form.get('due', task.due.strftime('%Y-%m-%d')) }}" required>
+    
+        <label for="description">Description</label>
+        <textarea class="task-desc" name="description" id="description">{{ request.form.get('description', task.description) }}</textarea>
+    
+        <input class="task-button" type="submit" value="Save">
+    </form>
+
+    <hr>
+    
+    <form action="{{ url_for('todo.delete', id=task.id) }}" method="post">
+        <input class="danger" type="submit" value="Delete" onclick="return confirm('Are you sure?');">
+    </form>
+{% endblock %}

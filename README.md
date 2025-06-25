@@ -1,27 +1,28 @@
-# Flaskr – Extended Version
+# ToDoAlchemy
 
-This project is based on the official [Flask tutorial](https://flask.palletsprojects.com/en/latest/tutorial/), with extended testing and code structure improvements. The goal is to provide a clean, reliable starting point for future Flask-based applications.
+This project is based on the official [Flask tutorial](https://flask.palletsprojects.com/en/latest/tutorial/), but has been refactored to use SQLAlchemy and reworked into a simple ToDo application. The authentication system and blueprint structure remain, but all database access is now handled via SQLAlchemy models. The tests have not yet been refactored for SQLAlchemy—this will be addressed in a future version.
 
 ## Features
 
-- 100% test coverage with `pytest` and `coverage`
+- ToDo list management (create, view, update, delete tasks)
 - Full authentication system (register, login, logout)
-- Blueprint-based structure
-- SQLite database integration with schema versioning
+- Modular blueprint-based structure
+- Database integration via SQLAlchemy ORM
 - HTML templates using Jinja2
 - Easy to extend with new routes, models, or APIs
 
 ## Purpose
 
-This repository serves as a minimal Flask project template with a complete testing setup. It's intended as a base for experimenting with new features or quickly spinning up production-ready prototypes.
+This repository serves as a modern Flask project template with SQLAlchemy and a basic ToDo app as an example. It's intended as a starting point for your own projects or prototypes.
 
 ## Technologies
 
 - Python 3.x
 - Flask
+- SQLAlchemy
 - Jinja2
 - SQLite
-- `pytest`
+- `pytest` (tests not yet refactored for SQLAlchemy)
 - `coverage`
 
 ## Getting Started
@@ -41,7 +42,11 @@ Run the development server:
 flask --app flaskr run
 ```
 
-Running tests, generating visual coverage report (html)
+## Testing & Coverage
+
+The tests are not yet updated for SQLAlchemy. This will be improved in a future release.
+
+To run tests and generate a coverage report (HTML):
 ```bash
 coverage run -m pytest
 coverage report -m
@@ -57,13 +62,12 @@ To enable:
 pip install pre-commit
 pre-commit install
 ```
-To manually run on all files
+To manually run on all files:
 ```bash
 pre-commit run --all-files
 ```
 
-The following checks are configured in .pre-commit-config.yaml
+The following checks are configured in `.pre-commit-config.yaml`:
 - black: code formatting
 - ruff: linting & autofix
 - end-of-line-fixer: final newline enforcement
-

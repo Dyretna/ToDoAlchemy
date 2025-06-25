@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %} - ToDo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Jesper Anteryd">
+    <meta name="description" content="Todo-app with SQL-alchemy, based on official Flask-template.">
+    <meta name="robots" content="all">
+</head>
+<body>
+    <div class="site-header">
+        <span class="site-title">Task Manager</span>
+        <nav>
+            <ul>
+                {% if g.user %}
+                    <li><span>Logged in: {{ g.user['username'] }}</span></li>
+                    <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('auth.register') }}">Register</a></li>
+                    <li><a href="{{ url_for('auth.login') }}">Log In</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </div>
+    <div class="darkframe">
+            <div class="content-box">
+                <div class="section-header">
+                    {% block header %}{% endblock %}
+                </div>
+                <div class="content-scroll">
+                    {% for message in get_flashed_messages() %}
+                        <div class="flash">{{ message }}</div>
+                    {% endfor %}
+                    {% block content %}{% endblock %}
+                    {% block scripts %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
